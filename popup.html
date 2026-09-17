@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Quick Notes</title>
+  <link rel="stylesheet" href="popup.css" />
+</head>
+<body>
+  <header>
+    <h1>Quick Notes</h1>
+    <button id="clearAll" title="Delete all notes">Clear all</button>
+  </header>
+
+  <form id="addForm">
+    <textarea id="noteInput" placeholder="Write a quick note… (Ctrl/Cmd+Enter to save)" rows="3"></textarea>
+    <div class="actions">
+      <button type="button" id="saveSelectionBtn" title="Grab the current page's selected text">
+        Grab selection
+      </button>
+      <button type="submit" id="saveNoteBtn">Save note</button>
+    </div>
+  </form>
+
+  <ul id="notesList"></ul>
+
+  <p id="emptyState" class="empty-state">No notes yet. Write one above, or right-click any page to save selected text or links here.</p>
+
+  <script src="popup.js"></script>
+</body>
+</html>
