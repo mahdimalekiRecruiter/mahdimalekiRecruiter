@@ -1,0 +1,158 @@
+:root {
+  --bg: #1e1e26;
+  --surface: #2a2a35;
+  --border: #3d3d4a;
+  --text: #e9e9ee;
+  --text-dim: #9c9ca8;
+  --accent: #ffc400;
+  --accent-text: #2a2200;
+  --ok: #4caf50;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  width: 360px;
+  margin: 0;
+  padding: 0 14px 14px;
+  font-family: Tahoma, "Vazirmatn", "Segoe UI", sans-serif;
+  font-size: 13px;
+  background: var(--bg);
+  color: var(--text);
+}
+
+header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 12px 0 6px;
+}
+
+h1 {
+  font-size: 15px;
+  margin: 0;
+}
+
+h2 {
+  font-size: 13px;
+  margin: 0;
+}
+
+section {
+  margin-top: 10px;
+}
+
+.switch {
+  display: flex;
+  gap: 6px;
+  align-items: center;
+  font-weight: 600;
+  color: var(--ok);
+}
+
+.status {
+  margin: 4px 0 0;
+  color: var(--text-dim);
+  min-height: 16px;
+}
+
+button {
+  width: 100%;
+  padding: 8px;
+  margin-bottom: 6px;
+  border: none;
+  border-radius: 6px;
+  background: var(--accent);
+  color: var(--accent-text);
+  font: inherit;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+button.secondary {
+  background: var(--surface);
+  color: var(--text);
+  border: 1px solid var(--border);
+}
+
+button.link {
+  width: auto;
+  padding: 0;
+  margin: 0;
+  background: none;
+  color: var(--text-dim);
+  font-weight: normal;
+}
+
+.fields label {
+  display: block;
+  margin-bottom: 8px;
+  color: var(--text-dim);
+}
+
+.fields input[type="text"],
+.fields input[type="number"] {
+  display: block;
+  width: 100%;
+  margin-top: 3px;
+  padding: 6px 8px;
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  background: var(--surface);
+  color: var(--text);
+  font: inherit;
+}
+
+.fields .inline {
+  display: flex;
+  gap: 6px;
+  align-items: center;
+}
+
+.row {
+  display: flex;
+  gap: 8px;
+}
+
+.row label {
+  flex: 1;
+}
+
+.log-head {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+#log {
+  list-style: none;
+  padding: 0;
+  margin: 6px 0 0;
+  max-height: 160px;
+  overflow-y: auto;
+}
+
+#log li {
+  background: var(--surface);
+  border-radius: 6px;
+  padding: 6px 8px;
+  margin-bottom: 4px;
+}
+
+#log li.empty {
+  color: var(--text-dim);
+  background: none;
+  padding: 0;
+}
+
+#log time {
+  color: var(--ok);
+  font-size: 11px;
+}
+
+#log p {
+  margin: 2px 0 0;
+  white-space: pre-wrap;
+}
