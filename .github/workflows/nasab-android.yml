@@ -1,0 +1,52 @@
+name: Nasab Android APK
+
+on:
+  push:
+    paths:
+      - "nasab-android/**"
+      - ".github/workflows/nasab-android.yml"
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: nasab-android
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: "17"
+
+      - uses: android-actions/setup-android@v3
+
+      - uses: gradle/actions/setup-gradle@v4
+
+      # Optional real signing key: set NASAB_KEYSTORE_B64 (base64 of the .jks), NASAB_KEYSTORE_PASSWORD,
+      # NASAB_KEY_ALIAS and NASAB_KEY_PASSWORD as repository secrets. Without them the shared debug key signs the APK.
+      - name: Restore release keystore
+        env:
+          KEYSTORE_B64: ${{ secrets.NASAB_KEYSTORE_B64 }}
+        if: env.KEYSTORE_B64 != ''
+        run: |
+          echo "$KEYSTORE_B64" | base64 -d > "$RUNNER_TEMP/release.jks"
+          echo "NASAB_KEYSTORE_PATH=$RUNNER_TEMP/release.jks" >> "$GITHUB_ENV"
+
+      - name: Build APK
+        env:
+          NASAB_KEYSTORE_PASSWORD: ${{ secrets.NASAB_KEYSTORE_PASSWORD }}
+          NASAB_KEY_ALIAS: ${{ secrets.NASAB_KEY_ALIAS }}
+          NASAB_KEY_PASSWORD: ${{ secrets.NASAB_KEY_PASSWORD }}
+        run: ./gradlew --no-daemon assembleRelease
+
+      - name: Name the APK
+        run: cp app/build/outputs/apk/release/app-release.apk "marsito-nasab-${GITHUB_RUN_NUMBER}.apk"
+
+      - uses: actions/upload-artifact@v4
+        with:
+          name: marsito-nasab-apk
+          path: nasab-android/marsito-nasab-*.apk
+          if-no-files-found: error
