@@ -1,0 +1,31 @@
+{
+  "manifest_version": 3,
+  "name": "گیرندهٔ خودکار سفارش همیار",
+  "version": "1.0.0",
+  "description": "سفارش‌های جدید پنل همیار سپاهان باتری را به‌محض ظاهر شدن به‌صورت خودکار قبول می‌کند و اطلاع می‌دهد.",
+  "action": {
+    "default_popup": "popup.html",
+    "default_icon": {
+      "16": "icons/icon16.png",
+      "48": "icons/icon48.png",
+      "128": "icons/icon128.png"
+    }
+  },
+  "icons": {
+    "16": "icons/icon16.png",
+    "48": "icons/icon48.png",
+    "128": "icons/icon128.png"
+  },
+  "background": {
+    "service_worker": "background.js"
+  },
+  "permissions": ["storage", "notifications", "tabs"],
+  "host_permissions": ["https://hamyar.sepahanbattery.com/*"],
+  "content_scripts": [
+    {
+      "matches": ["https://hamyar.sepahanbattery.com/*"],
+      "js": ["defaults.js", "content.js"],
+      "run_at": "document_idle"
+    }
+  ]
+}

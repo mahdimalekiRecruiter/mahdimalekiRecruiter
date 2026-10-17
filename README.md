@@ -36,3 +36,9 @@ icons/            16/48/128px toolbar & store icons
   `chrome.storage.local` for `chrome.storage.sync` if you want notes to
   follow you across signed-in Chrome instances (sync has tighter size quotas).
 - No external network requests or third-party libraries are used.
+
+---
+
+This repo also contains `order-grabber/`, a separate extension that auto-accepts
+new orders on the Hamyar (Sepahan Battery) partner panel. See
+[`order-grabber/README.md`](order-grabber/README.md).

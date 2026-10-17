@@ -1,0 +1,10 @@
+.gradle/
+build/
+app/build/
+local.properties
+.idea/
+*.iml
+captures/
+# A real release keystore never goes in git; only the shared debug one does.
+*.jks
+release.keystore

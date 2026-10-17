@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+  <meta charset="UTF-8" />
+  <title>گیرندهٔ سفارش</title>
+  <link rel="stylesheet" href="popup.css" />
+</head>
+<body>
+  <header>
+    <h1>گیرندهٔ خودکار سفارش</h1>
+    <label class="switch">
+      <input type="checkbox" id="enabled" />
+      <span>فعال</span>
+    </label>
+  </header>
+
+  <p id="status" class="status"></p>
+
+  <section>
+    <button id="pickBtn" type="button">🎯 انتخاب دکمهٔ «قبول سفارش» در صفحه</button>
+    <button id="testBtn" type="button" class="secondary">🔍 تست: چند دکمه پیدا می‌شود؟</button>
+  </section>
+
+  <section class="fields">
+    <label>متن دکمهٔ قبول سفارش (با کاما جدا کنید)
+      <input id="claimTexts" type="text" />
+    </label>
+    <label>یا سلکتور CSS دکمه (اولویت دارد)
+      <input id="claimSelector" type="text" dir="ltr" placeholder="خالی = تشخیص با متن" />
+    </label>
+    <label>متن دکمهٔ تأیید در پنجرهٔ بعدی
+      <input id="confirmTexts" type="text" />
+    </label>
+    <div class="row">
+      <label>رفرش صفحه هر (ثانیه، ۰ = خاموش)
+        <input id="reloadSeconds" type="number" min="0" />
+      </label>
+      <label>حداکثر سفارش (۰ = نامحدود)
+        <input id="maxClaims" type="number" min="0" />
+      </label>
+    </div>
+    <label class="inline"><input id="sound" type="checkbox" /> پخش صدای هشدار</label>
+  </section>
+
+  <section>
+    <div class="log-head">
+      <h2>سفارش‌های گرفته‌شده</h2>
+      <button id="clearLog" type="button" class="link">پاک کردن</button>
+    </div>
+    <ul id="log"></ul>
+  </section>
+
+  <script src="defaults.js"></script>
+  <script src="popup.js"></script>
+</body>
+</html>
